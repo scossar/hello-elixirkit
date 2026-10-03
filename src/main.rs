@@ -1,11 +1,13 @@
 fn main() {
+    // Rust opens a local TCP PubSub endpoint.
+    // Port 0 means "pick an available port".
     let pubsub = elixirkit::PubSub::listen("tcp://127.0.0.1:0").expect("failed to start PubSub");
 
     println!("[rust] PubSub listening at {}", pubsub.url());
 
-    // Subscribe before starting Elixir.
     let pubsub_for_reply = pubsub.clone();
 
+    // Subscribe before starting E
     pubsub.subscribe("hello", move |message| {
         println!(
             "[rust] received from Elixir: {}",

@@ -2,8 +2,6 @@ Mix.install([
   :elixirkit
 ])
 
-# alias Mix.PubSub
-
 children = [
   {ElixirKit.PubSub, connect: System.fetch_env!("ELIXIRKIT_PUBSUB"), on_exit: &System.stop/0}
 ]
